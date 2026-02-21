@@ -1,0 +1,50 @@
+name: ATS-GOD CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests (rule-based mode — no API key needed)
+        env:
+          PYTHONPATH: .
+        run: pytest tests/ -v --tb=short
+
+      - name: Verify all imports
+        env:
+          PYTHONPATH: .
+        run: |
+          python -c "
+          from src.agents.algorithm_breaker import AlgorithmBreaker
+          from src.agents.sa_specialist import SASpecialist
+          from src.agents.global_setter import GlobalSetter
+          from src.agents.recruiter_scanner import RecruiterScanner
+          from src.agents.hiring_manager_whisperer import HiringManagerWhisperer
+          from src.agents.semantic_matcher import SemanticMatcher
+          from src.agents.compliance_guardian import ComplianceGuardian
+          from src.agents.future_architect import FutureArchitect
+          from src.agents.cover_letter_agent import CoverLetterAgent
+          from src.core.orchestrator import ATSGodOrchestrator
+          from src.core.exporter import export_to_txt
+          print('✓ All 9 agents + orchestrator + exporter imported successfully')
+          "
+
+      - name: Syntax check app.py
+        run: python -m py_compile app.py && echo "✓ app.py syntax OK"
