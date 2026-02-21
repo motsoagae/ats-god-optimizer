@@ -2,6 +2,11 @@
 ATS-GOD v4.0 — Main Streamlit Application
 Fully wired: uploads → 9 agents → 3 CV variants + cover letter + export
 Supports Groq (free) + OpenAI + Anthropic
+Copyright © 2025 [Your Name/Company]
+All rights reserved.
+
+Unauthorized copying, distribution, or modification of this software,
+via any medium, is strictly prohibited without express written permission.
 """
 import asyncio
 import logging
