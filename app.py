@@ -341,7 +341,7 @@ def main():
                   "✓ Good" if 300 <= wc_cv <= 1200 else ("Too short" if wc_cv < 300 else "May be too long"))
         m2.metric("JD Word Count", wc_jd,
                   "✓ Detailed" if wc_jd >= 120 else "More detail = better analysis")
-        _, label = detect_available_llm()
+        _, _, label = detect_available_llm()
         m3.metric("AI Mode", label or "Rule-Based",
                   "Full AI analysis" if label else "Add GROQ_API_KEY for AI")
 
