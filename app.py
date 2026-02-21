@@ -87,8 +87,8 @@ def detect_available_llm():
     for env_var, placeholder, label in checks:
         val = os.getenv(env_var, "")
         if val and not val.startswith(placeholder):
-            return True, label
-    return False, None
+            return True, label, "active"
+    return False, None, "none"
 
 # ─── Sidebar ──────────────────────────────────────────────────────────────────
 
@@ -96,7 +96,7 @@ def render_sidebar():
     with st.sidebar:
         st.header("⚙️ Configuration")
 
-        has_key, provider = detect_available_llm()
+        has_key, provider, status = detect_available_llm()
         if has_key:
             st.success(f"🟢 {provider} Connected")
         else:
