@@ -395,10 +395,11 @@ def main():
                     st.code(traceback.format_exc())
                 st.info("Check: Are all files in src/ present? Is PYTHONPATH set? Run: `export PYTHONPATH=.`")
 
+st.sidebar.markdown("---")
+st.sidebar.caption("© 2025 ATS-GOD™ | All rights reserved")
+st.sidebar.caption("Proprietary software — Unauthorized use prohibited")
 
 if __name__ == "__main__":
     main()
 
-st.sidebar.markdown("---")
-st.sidebar.caption("© 2025 ATS-GOD™ | All rights reserved")
-st.sidebar.caption("Proprietary software — Unauthorized use prohibited")
+
