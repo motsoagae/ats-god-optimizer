@@ -398,3 +398,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+st.sidebar.markdown("---")
+st.sidebar.caption("© 2025 ATS-GOD™ | All rights reserved")
+st.sidebar.caption("Proprietary software — Unauthorized use prohibited")
